@@ -1,4 +1,6 @@
-# IBVS-with-Aruco-Tag
+# IBVS with Aruco Tag
+## Qian Zilling, Atanda Abdullahi Adewale, Nauman 
+
 
 # Objective
 Implement or simulate image-based visual servo control in Gazebo using a Doosan M0609 robotic arm manipulator with a camera mounted on its end effector. The visual features will be provided by a 4-point Aruco tag.
