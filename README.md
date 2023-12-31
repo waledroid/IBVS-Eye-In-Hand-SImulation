@@ -45,7 +45,7 @@ The aim of this VIBOT MSFT course project is to implement or simulate image-base
   <!-- Create a joint between the wall and the robot's base -->
       
   </robot>
-<code>
+</code>
 
 # Camera.xacro 
 - Defines a camera link (camera_link) as a visual box with a specified size and a red color for Gazebo simulation.
