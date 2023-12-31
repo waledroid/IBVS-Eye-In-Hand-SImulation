@@ -120,7 +120,7 @@ Spawn the robot in the Gazebo scene.
 # PART 3
 ## Visual Servoing with ViSP (C++), MoveIt! Integration, manipulate the robot in Cartesian space:
 
-####visp.cpp
+#### visp.cpp
 - Visp code to Calculate the necessary transformations to control the robot's end effector.
 - Integrate MoveIt! for motion planning and control.
 - Use the computed transformations to generate a trajectory for the robot's end effector.
