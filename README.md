@@ -54,54 +54,52 @@ The aim of this VIBOT MSFT course project is to implement or simulate image-base
 
 <pre>
 
-  <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="kinova">
+  < robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="kinova">
     
-  <!-- Define customizable properties -->
-  <link name="camera_link"> ... </link>
+  < !-- Define customizable properties -->
+  < link name="camera_link"> ... </link>
 
-  <joint name="camera_joint" type="fixed">
-    <parent link="link6"/>
-    <child link="camera_link"/>
-    <origin rpy="${M_PI/2} ${-M_PI/2} 0" xyz="${offset_from_link_x} ${offset_from_link_y} ${offset_from_link_z}"/>
-    <axis xyz="1 0 0" />
-  </joint>
+  < joint name="camera_joint" type="fixed">
+    < parent link="link6"/>
+    < child link="camera_link"/>
+    < origin rpy="${M_PI/2} ${-M_PI/2} 0" xyz="${offset_from_link_x} ${offset_from_link_y} ${offset_from_link_z}"/>
+    < axis xyz="1 0 0" />
+  < /joint>
 
-  <gazebo reference="camera_link">
-    <sensor type="camera" name="camera_camera_sensor">
-      <!-- .... -->
-      <plugin name="camera_camera_controller" filename="libgazebo_ros_camera.so">
-      <!---...--->
-      </plugin>
-    </sensor>
-  </gazebo>
+  < gazebo reference="camera_link">
+    < sensor type="camera" name="camera_camera_sensor">
+      ...
+      < plugin name="camera_camera_controller" filename="libgazebo_ros_camera.so">
+      ...
+      < /plugin>
+    < /sensor>
+  < /gazebo>
 
-  </robot>
+  < /robot>
 </pre>
 
 # Aruco.xarco
 - Place an Aruco tag within the world scene.
 <pre>
-    <!-- gazebo_world.world -->
-  <?xml version="1.0"?>
+    < !-- gazebo_world.world -->
+  < ?xml version="1.0"?>
+ 
+  < sdf version="1.4">
+    < world name="default">
+
+      < include>
+        < uri>model://m0609_robot</uri>
+        < pose>0 0 0 0 0 0</pose>
+      < /include>
   
-  <sdf version="1.4">
-    <world name="default">
+      < model name="aruco_tag">
+        < !-- Add Aruco tag properties here -->
+        < pose>1 1 1 0 0 0</pose>
+        < !-- ... other Aruco tag properties ... -->
+      < /model>
   
-      <!-- ... other world properties ... -->
-  
-      <include>
-        <uri>model://m0609_robot</uri>
-        <pose>0 0 0 0 0 0</pose>
-      </include>
-  
-      <model name="aruco_tag">
-        <!-- Add Aruco tag properties here -->
-        <pose>1 1 1 0 0 0</pose>
-        <!-- ... other Aruco tag properties ... -->
-      </model>
-  
-    </world>
-  </sdf>
+    < /world>
+  < /sdf>
 </pre>
 
 # main.launch
