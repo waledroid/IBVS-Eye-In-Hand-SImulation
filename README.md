@@ -16,11 +16,11 @@ The aim of this VIBOT MSFT course project is to implement or simulate image-base
 - Add the Camera 
 <pre>
   <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="m0609" >
-  ...
+  
   <!-- Define customizable properties -->
-  ...
+  <!---...--->
   <!-- Assign property values for clarity -->
-  ...
+  <!---...--->
   <!-- Include relevant Xacro files for modularity -->
   <xacro:include filename="$(find dsr_description)/xacro/macro.m0609.white.xacro" />
   <xacro:include filename="$(find manipulator_description)/urdf/onrobot_rg2_model_macro.xacro" />
@@ -32,7 +32,7 @@ The aim of this VIBOT MSFT course project is to implement or simulate image-base
   <!-- Define the world link -->
   <link name="world" />
   <!-- Create a fixed joint between the world and the robot's base -->
-  ...
+  
   <!-- Create a fixed joint representing the robot's wrist (effector) -->
   <joint name="wrist" type="fixed">
     <origin xyz="0 0 0" rpy="0 0 0"/>
@@ -41,9 +41,7 @@ The aim of this VIBOT MSFT course project is to implement or simulate image-base
   </joint>
 
   <!--Create the Aruco wall link-->
-  ...
   <!-- Create a joint between the wall and the robot's base -->
-  ...
       
   </robot>
 </pre>
@@ -58,7 +56,6 @@ The aim of this VIBOT MSFT course project is to implement or simulate image-base
   <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="kinova">
     
   <!-- Define customizable properties -->
-  ...
   <link name="camera_link"> ... </link>
 
   <joint name="camera_joint" type="fixed">
@@ -70,9 +67,9 @@ The aim of this VIBOT MSFT course project is to implement or simulate image-base
 
   <gazebo reference="camera_link">
     <sensor type="camera" name="camera_camera_sensor">
-      ...
+      <!-- .... -->
       <plugin name="camera_camera_controller" filename="libgazebo_ros_camera.so">
-        ...
+      <!---...--->
       </plugin>
     </sensor>
   </gazebo>
@@ -83,28 +80,27 @@ The aim of this VIBOT MSFT course project is to implement or simulate image-base
 # Aruco.xarco
 - Place an Aruco tag within the world scene.
 <pre>
-  <!-- gazebo_world.world -->
-<?xml version="1.0"?>
-
-<sdf version="1.4">
-  <world name="default">
-
-    <!-- ... other world properties ... -->
-
-    <include>
-      <uri>model://m0609_robot</uri>
-      <pose>0 0 0 0 0 0</pose>
-    </include>
-
-    <model name="aruco_tag">
-      <!-- Add Aruco tag properties here -->
-      <pose>1 1 1 0 0 0</pose>
-      <!-- ... other Aruco tag properties ... -->
-    </model>
-
-  </world>
-</sdf>
-
+    <!-- gazebo_world.world -->
+  <?xml version="1.0"?>
+  
+  <sdf version="1.4">
+    <world name="default">
+  
+      <!-- ... other world properties ... -->
+  
+      <include>
+        <uri>model://m0609_robot</uri>
+        <pose>0 0 0 0 0 0</pose>
+      </include>
+  
+      <model name="aruco_tag">
+        <!-- Add Aruco tag properties here -->
+        <pose>1 1 1 0 0 0</pose>
+        <!-- ... other Aruco tag properties ... -->
+      </model>
+  
+    </world>
+  </sdf>
 </pre>
 
 # main.launch
