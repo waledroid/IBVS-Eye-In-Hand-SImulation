@@ -6,6 +6,8 @@
 Implement or simulate image-based visual servo control in Gazebo using a Doosan M0609 robotic arm manipulator with a camera mounted on its end effector. The visual features will be provided by a 4-point Aruco tag.
 
 
+
+
 # Robot Structure Definition:
 Build the robotic structure using URDF and Xacro.
 Configure a 6-degree-of-freedom joint for the Doosan M0609 robotic arm.
