@@ -104,6 +104,7 @@ The aim of this VIBOT MSFT course project is to implement or simulate image-base
 
 #### main.launch
 Spawn the robot in the Gazebo scene.
+<pre></pre>
 
 # PART 2
 ## Camera Image processing, Aruco Tag Detection, Extract 4 corner points, Coordinate Transformation: 
