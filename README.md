@@ -1,8 +1,8 @@
 # ARUCO IBVS SIMULATION
- Qian Zilling, Atanda Abdullahi Adewale, Nauman <br/>
+ Qian Zilling, Atanda Abdullahi Adewale, Nauman <br>
 
 
-# Objectice:
+# Objective:
 The aim of this VIBOT MSFT course project is to implement or simulate image-based visual servo control in Gazebo using a Doosan M0609 robotic arm manipulator with a camera mounted on its end effector. The visual features will be provided from 4-points in an Aruco tag.
 
 # PART 1
