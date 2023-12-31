@@ -135,7 +135,7 @@ Spawn the robot in the Gazebo scene.
 # PART 4
 ## Simulation, Testing and Optimization:
 
-####main.launch
+#### main.launch
 - Launch the Gazebo simulation environment.
 - Run the ROS nodes and observe the robot's movement in response to the Aruco tag.
 - Fine-tune the visual servoing algorithm and system parameters.
