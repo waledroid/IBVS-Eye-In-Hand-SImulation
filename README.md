@@ -1,5 +1,5 @@
 # IBVS with Aruco Tag
-## Qian Zilling, Atanda Abdullahi Adewale, Nauman 
+## <h6> Qian Zilling, Atanda Abdullahi Adewale, Nauman </h6>
 
 
 # Objective
