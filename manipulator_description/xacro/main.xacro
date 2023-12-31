@@ -1,0 +1,61 @@
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="m0609" >
+
+  <!-- Define customizable properties -->
+  <xacro:arg name="color" default="white"/>
+  <xacro:arg name="gripper" default="none"/>
+  <xacro:arg name="namespace" default="none"/>
+
+  <!-- Assign property values for clarity -->
+  <xacro:property name="robot_color" value="$(arg color)"/>
+  <xacro:property name="robot_gripper" value="$(arg gripper)"/>
+
+  <!-- Include relevant Xacro files for modularity -->
+  <xacro:include filename="$(find dsr_description)/xacro/macro.m0609.white.xacro" />
+  <xacro:include filename="$(find manipulator_description)/urdf/onrobot_rg2_model_macro.xacro" />
+  <xacro:include filename="$(find manipulator_description)/urdf/camera.xacro" />
+  
+  <!-- Include the onrobot_rg2 macro for gripper components -->
+  <xacro:onrobot_rg2 prefix="my_robot_rg2"/>
+  
+  <!-- Include the m0609 macro with a specified namespace -->
+  <xacro:m0609 namespace="$(arg namespace)"/>
+  
+    <!-- Define the world link -->
+  <link name="world" />
+
+  <!-- Create a fixed joint between the world and the robot's base -->
+  <joint name="world_fixed" type="fixed">
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <parent link="world"/>
+    <child link="base_0"/>
+  </joint>
+
+  <!-- Create a fixed joint representing the robot's wrist -->
+  <joint name="wrist" type="fixed">
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <parent link="link6"/>
+    <child link="my_robot_rg2onrobot_rg2_base_link"/>
+  </joint>
+
+  <!--============================================================-->
+  <link name="wall">
+    <visual>
+      <geometry>
+        <box size="0.1 1.2 1.2"/> <!-- Adjust the size as needed -->
+      </geometry>
+      <material name="wall_color">
+        <color rgba="0.8 0.8 0.8 1.0"/> <!-- Adjust the color as needed -->
+      </material>
+    </visual>
+  </link>
+
+  <!-- Create a joint between the wall and the robot's base -->
+  <joint name="wall_joint" type="fixed">
+    <origin xyz="1.5 0 0.5"/> <!-- Adjust the position as needed -->
+    <parent link="base_0"/>
+    <child link="wall"/>
+  </joint>
+
+
+</robot>
+   

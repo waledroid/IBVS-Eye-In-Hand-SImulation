@@ -1,0 +1,43 @@
+<launch>
+
+  <!-- Arguments for customization -->
+  <arg name="model" default="main"/>
+  <arg name="ns" default="dsr"/>
+  <arg name="gui" default="True" />
+  <arg name="remap" default="False"/>
+  <arg name="color" default="white"/>
+  <arg name="gripper" default="none"/>
+
+  <!-- Set robot description parameter using Xacro -->
+ 
+
+  <param name="robot_description" command="$(find xacro)/xacro '$(find manipulator_description)/xacro/$(arg model).xacro' '--inorder' 'namespace:=$(arg ns)' color:=$(arg color) gripper:=$(arg gripper)"/>
+  
+  <!-- Conditionally launch nodes based on remap argument -->
+  <group if="$(eval arg('remap') == False)">
+    <!-- Robot State Publisher for joint state visualization -->
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" output="screen" respawn="false"/>
+    <!-- Joint State Publisher GUI for interactive joint control -->
+    <node name="joint_state_publisher_gui" pkg="joint_state_publisher_gui" type="joint_state_publisher_gui">
+      <param name="/use_gui" value="true"/>
+    </node>
+  </group>
+
+  <!-- Conditionally launch remapped Robot State Publisher -->
+  <group if="$(eval arg('remap') == True)">
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" output="screen" respawn="false">
+      <!-- Remap joint_states topic to a specified namespace -->
+      <remap from="/joint_states" to="/$(arg ns)/joint_states"/>
+    </node>
+  </group>
+
+  <!-- Visualize the robot in RViz with a default configuration -->
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find dsr_description)/rviz/default.rviz"/>
+
+  <!-- Start Gazebo for simulation -->
+  <node pkg="gazebo_ros" type="gazebo" name="gazebo" respawn="false" output="screen"/>
+
+  <!-- Spawn the robot model into Gazebo -->
+  <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" args="-urdf -model my_robot -param robot_description"/>
+
+</launch>
