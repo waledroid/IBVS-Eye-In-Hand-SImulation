@@ -105,7 +105,7 @@ The aim of this VIBOT MSFT course project is to implement or simulate image-base
 #### main.launch
 Spawn the robot in the Gazebo scene.
 
-#PART 2
+# PART 2
 ## Camera Image processing, Aruco Tag Detection, Extract 4 corner points, Coordinate Transformation: 
 
 #### aruco_detect.cpp
@@ -126,7 +126,7 @@ Spawn the robot in the Gazebo scene.
 - Publish control commands to move the robot's end effector closer to the Aruco tag.
 
 # PART 4
-# Simulation, Testing and Optimization:
+## Simulation, Testing and Optimization:
 - Launch the Gazebo simulation environment.
 - Run the ROS nodes and observe the robot's movement in response to the Aruco tag.
 - Fine-tune the visual servoing algorithm and system parameters.
