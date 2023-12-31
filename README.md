@@ -36,16 +36,18 @@ The aim of this VIBOT MSFT course project is to implement or simulate image-base
   
   < !-- Create a fixed joint representing the robot's wrist (effector) -->
   < joint name="wrist" type="fixed">
-    <origin xyz="0 0 0" rpy="0 0 0"/>
-    <parent link="link6"/>
-    <child link="my_robot_rg2onrobot_rg2_base_link"/>
+    < origin xyz="0 0 0" rpy="0 0 0"/>
+    < parent link="link6"/>
+    < child link="my_robot_rg2onrobot_rg2_base_link"/>
   < /joint>
 
   < !--Create the Aruco wall link-->
+    ...
   < !-- Create a joint between the wall and the robot's base -->
-      
+    ...
   < /robot>
 </pre>
+
 
 # Camera.xacro 
 - Defines a camera link (camera_link) as a visual box with a specified size and a red color for Gazebo simulation.
