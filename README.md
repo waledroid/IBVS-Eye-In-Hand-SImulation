@@ -10,7 +10,7 @@ The aim of this VIBOT MSFT course project is to implement or simulate image-base
 ### PART 1
 # Robot Structure Definition, Add components and Gazebo Scene Setup::
 
-### main.xacro
+#### main.xacro
 - Build and configure the robotic structure for the Doosan M0609 robotic arm using URDF and Xacro.
 - Add a onrobot_rg2 gripper to the end effector.
 - Add the Camera 
