@@ -15,37 +15,37 @@ The aim of this VIBOT MSFT course project is to implement or simulate image-base
 - Add a onrobot_rg2 gripper to the end effector.
 - Add the Camera 
 
-<code>
+<pre>
   < robot >
   
-  <pre><!-- Define customizable properties --></pre>
+  < !-- Define customizable properties -->
   ...
-  <!-- Assign property values for clarity -->
+  < !-- Assign property values for clarity -->
   ...
-  <!-- Include relevant Xacro files for modularity -->
-  <xacro:include filename="$(find dsr_description)/xacro/macro.m0609.white.xacro" />
-  <xacro:include filename="$(find manipulator_description)/urdf/onrobot_rg2_model_macro.xacro" />
-  <xacro:include filename="$(find manipulator_description)/urdf/camera.xacro" />
+  < !-- Include relevant Xacro files for modularity -->
+  < xacro:include filename="$(find dsr_description)/xacro/macro.m0609.white.xacro" />
+  < xacro:include filename="$(find manipulator_description)/urdf/onrobot_rg2_model_macro.xacro" />
+  < xacro:include filename="$(find manipulator_description)/urdf/camera.xacro" />
 
-  <!-- Include the onrobot_rg2 macro for gripper components -->
-  <xacro:onrobot_rg2 prefix="my_robot_rg2"/>
+  < !-- Include the onrobot_rg2 macro for gripper components -->
+  < xacro:onrobot_rg2 prefix="my_robot_rg2"/>
     
-  <!-- Define the world link -->
-  <link name="world" />
-  <!-- Create a fixed joint between the world and the robot's base -->
+  < !-- Define the world link -->
+  < link name="world" />
+  < !-- Create a fixed joint between the world and the robot's base -->
   
-  <!-- Create a fixed joint representing the robot's wrist (effector) -->
-  <joint name="wrist" type="fixed">
+  < !-- Create a fixed joint representing the robot's wrist (effector) -->
+  < joint name="wrist" type="fixed">
     <origin xyz="0 0 0" rpy="0 0 0"/>
     <parent link="link6"/>
     <child link="my_robot_rg2onrobot_rg2_base_link"/>
-  </joint>
+  < /joint>
 
-  <!--Create the Aruco wall link-->
-  <!-- Create a joint between the wall and the robot's base -->
+  < !--Create the Aruco wall link-->
+  < !-- Create a joint between the wall and the robot's base -->
       
-  </robot>
-</code>
+  < /robot>
+</pre>
 
 # Camera.xacro 
 - Defines a camera link (camera_link) as a visual box with a specified size and a red color for Gazebo simulation.
