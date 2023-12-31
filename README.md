@@ -119,15 +119,30 @@ Spawn the robot in the Gazebo scene.
 
 # PART 3
 ## Visual Servoing with ViSP (C++), MoveIt! Integration, manipulate the robot in Cartesian space:
+
+####visp.cpp
 - Visp code to Calculate the necessary transformations to control the robot's end effector.
 - Integrate MoveIt! for motion planning and control.
 - Use the computed transformations to generate a trajectory for the robot's end effector.
 - Subscribe to the camera images and perform visual servoing.
 - Publish control commands to move the robot's end effector closer to the Aruco tag.
 
+<pre>
+</pre>
+
+<pre>moveit<pre>
+
 # PART 4
 ## Simulation, Testing and Optimization:
+
+####main.launch
 - Launch the Gazebo simulation environment.
 - Run the ROS nodes and observe the robot's movement in response to the Aruco tag.
 - Fine-tune the visual servoing algorithm and system parameters.
 
+ <pre>
+
+
+<video>
+ 
+</video>
