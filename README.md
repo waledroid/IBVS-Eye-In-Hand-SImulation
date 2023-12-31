@@ -130,7 +130,7 @@ Spawn the robot in the Gazebo scene.
 <pre>
 </pre>
 
-<pre>moveit<pre>
+<pre>moveit</pre>
 
 # PART 4
 ## Simulation, Testing and Optimization:
@@ -140,7 +140,7 @@ Spawn the robot in the Gazebo scene.
 - Run the ROS nodes and observe the robot's movement in response to the Aruco tag.
 - Fine-tune the visual servoing algorithm and system parameters.
 
- <pre>
+<pre></pre>
 
 
 <video>
