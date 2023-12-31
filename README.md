@@ -105,28 +105,29 @@ The aim of this VIBOT MSFT course project is to implement or simulate image-base
 #### main.launch
 Spawn the robot in the Gazebo scene.
 
+#PART 2
+## Camera Image processing, Aruco Tag Detection, Extract 4 corner points, Coordinate Transformation: 
 
-# Aruco Tag Detection:
-Implement a mechanism to detect the Aruco tag in the Gazebo scene.
-Extract the 4 corner points of the detected Aruco tag.
+#### aruco_detect.cpp
+- Convert Image Format to OpencV format via cv_bridge
+- ArUco Detection using camera parameters (intrinsic matrix, distortion coefficients)
+- Extract the 4 corner points of the detected Aruco tag.
+- perform Coordinate Transformation to transform the ArUco tag's corner points to align them with the end effector's coordinate system.
 
-# Visual Servoing with ViSP (C++):
-Develop C++ code using ViSP for visual servoing based on the 4 corner points.
-Calculate the necessary transformations to control the robot's end effector.
+<pre>
+</pre>
 
-# MoveIt! Integration:
-Integrate MoveIt! for motion planning and control.
-Use the computed transformations to generate a trajectory for the robot's end effector.
-Cartesian Space Manipulation Node:
+# PART 3
+## Visual Servoing with ViSP (C++), MoveIt! Integration, manipulate the robot in Cartesian space:
+- Visp code to Calculate the necessary transformations to control the robot's end effector.
+- Integrate MoveIt! for motion planning and control.
+- Use the computed transformations to generate a trajectory for the robot's end effector.
+- Subscribe to the camera images and perform visual servoing.
+- Publish control commands to move the robot's end effector closer to the Aruco tag.
 
-# Develop a ROS node to manipulate the robot in Cartesian space.
-Subscribe to the camera images and perform visual servoing.
-Publish control commands to move the robot's end effector closer to the Aruco tag.
+# PART 4
+# Simulation, Testing and Optimization:
+- Launch the Gazebo simulation environment.
+- Run the ROS nodes and observe the robot's movement in response to the Aruco tag.
+- Fine-tune the visual servoing algorithm and system parameters.
 
-# Simulation and Testing:
-Launch the Gazebo simulation environment.
-Run the ROS nodes and observe the robot's movement in response to the Aruco tag.
-
-# Optimization and Documentation:
-Fine-tune the visual servoing algorithm and system parameters.
-Document the project, including URDF, Xacro files, and ROS node descriptions.
