@@ -15,9 +15,8 @@ The aim of this VIBOT MSFT course project is to implement or simulate image-base
 - Add a onrobot_rg2 gripper to the end effector.
 - Add the Camera 
 
-<pre>
-  <code>
-  <robot  >
+<code>
+  < robot >
   
   <pre><!-- Define customizable properties --></pre>
   ...
@@ -46,8 +45,7 @@ The aim of this VIBOT MSFT course project is to implement or simulate image-base
   <!-- Create a joint between the wall and the robot's base -->
       
   </robot>
-  <code>
-</pre>
+<code>
 
 # Camera.xacro 
 - Defines a camera link (camera_link) as a visual box with a specified size and a red color for Gazebo simulation.
