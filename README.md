@@ -14,7 +14,7 @@ The aim of this VIBOT MSFT course project is to implement or simulate image-base
 - Build and configure the robotic structure for the Doosan M0609 robotic arm using URDF and Xacro.
 - Add a onrobot_rg2 gripper to the end effector.
 - Add the Camera 
-<pre>
+
   <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="m0609" >
   
   <-- Define customizable properties -->
@@ -44,7 +44,7 @@ The aim of this VIBOT MSFT course project is to implement or simulate image-base
   <-- Create a joint between the wall and the robot's base -->
       
   </robot>
-</pre>
+
 
 # Camera.xacro 
 - Defines a camera link (camera_link) as a visual box with a specified size and a red color for Gazebo simulation.
