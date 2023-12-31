@@ -17,7 +17,7 @@ The aim of this VIBOT MSFT course project is to implement or simulate image-base
 <pre>
   <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="m0609" >
   
-  <!-- Define customizable properties -->
+  <-- Define customizable properties -->
   <!---...--->
   <!-- Assign property values for clarity -->
   <!---...--->
