@@ -15,6 +15,7 @@ The aim of this VIBOT MSFT course project is to implement or simulate image-base
 - Add a onrobot_rg2 gripper to the end effector.
 - Add the Camera 
 
+<pre>
   <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="m0609" >
   
   <-- Define customizable properties -->
@@ -22,7 +23,7 @@ The aim of this VIBOT MSFT course project is to implement or simulate image-base
   <-- Assign property values for clarity -->
   ...
   <-- Include relevant Xacro files for modularity -->
-  <xacro:include filename="$(find dsr_description)/xacro/macro.m0609.white.xacro" />
+  <pre><xacro:include filename="$(find dsr_description)/xacro/macro.m0609.white.xacro" /></pre>
   <xacro:include filename="$(find manipulator_description)/urdf/onrobot_rg2_model_macro.xacro" />
   <xacro:include filename="$(find manipulator_description)/urdf/camera.xacro" />
 
@@ -44,7 +45,7 @@ The aim of this VIBOT MSFT course project is to implement or simulate image-base
   <-- Create a joint between the wall and the robot's base -->
       
   </robot>
-
+</pre>
 
 # Camera.xacro 
 - Defines a camera link (camera_link) as a visual box with a specified size and a red color for Gazebo simulation.
