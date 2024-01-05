@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="m0609" >
+
+  <xacro:arg name="color"   default="white"/>
+  <xacro:arg name="gripper" default="none"/>
+  <xacro:arg name="namespace"      default="none"/>
+
+
+  <xacro:property name="cr" value="$(arg color)"/>
+  <xacro:property name="gr" value="$(arg gripper)"/>
+  <xacro:include filename="$(find dsr_description)/xacro/macro.m0609.white.xacro" />
+  <xacro:include filename="$(find manipulator_description)/urdf/onrobot_rg2_model_macro.xacro" />
+  <xacro:include filename="$(find manipulator_description)/urdf/camera.xacro" />
+  
+  <link name="world" />
+
+  <!-- World fixed joint-->
+  <joint name="world_fixed" type="fixed">
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <parent link="world"/>
+    <child link="base_0"/>
+  </joint>
+  <!---   ####################my code###############          -->
+
+  <!-- use onrobot_rg2 marco -->
+  <xacro:onrobot_rg2 prefix="my_robot_rg2"/>
+  <xacro:m0609 namespace="$(arg namespace)"/><!---   #########question how do you know the name space why we have it here? #########       -->
+
+  <joint name="wrist" type="fixed">
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <parent link="link6"/>
+    <child link="my_robot_rg2onrobot_rg2_base_link"/>
+  </joint>
+
+
+  
+    <!-- <joint name="joint0" type="fixed">
+        <parent link="world"/>
+        <child link="${prefix}onrobot_rg2_base_link"/>
+        <origin xyz= "0. 0. 0." rpy="0. 0. 0." />
+    </joint> -->
+  
+</robot>
+

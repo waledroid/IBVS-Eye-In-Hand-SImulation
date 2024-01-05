@@ -1,0 +1,7 @@
+# 客户端请求时发送的pose
+geometry_msgs/Pose movement
+geometry_msgs/Pose rotation
+---
+# 服务器响应发送的数据
+bool success      # Did it achieve it?
+

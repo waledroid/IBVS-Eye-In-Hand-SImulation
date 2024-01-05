@@ -1,0 +1,3 @@
+<launch>
+    <node pkg="visual_servoing" type="viso.py" name="viso" output="screen" />
+</launch>
