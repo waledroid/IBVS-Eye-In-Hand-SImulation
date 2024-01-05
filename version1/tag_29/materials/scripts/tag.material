@@ -1,0 +1,17 @@
+
+ 			material aruco_tag_29
+ 			{
+ 				technique
+ 				{
+ 				pass
+ 				{
+ 					texture_unit
+ 					{
+ 						// Relative to the location of the material script
+ 						texture ../textures/aruco_marker_29.png
+ 						filtering anisotropic
+ 						max_anisotropy 16
+ 					}
+ 				}
+ 				}
+ 			}

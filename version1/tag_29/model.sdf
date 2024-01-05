@@ -1,0 +1,32 @@
+
+ 			<?xml version="1.0"?>
+ 			<sdf version="1.6">
+ 			<model name="Aruco tag29">
+ 				<static>true</static>
+ 				<link name="robot_link">
+           <visual name="front_visual">
+             <pose>0.0025 0 0 0 0 0 </pose>
+               <geometry>
+                 <box>
+                   <size>0.005 0.33 0.33 </size>
+                 </box>
+               </geometry>
+               <material> <!-- Body material -->
+                 <script>
+                   <uri>model://tag_29/materials/scripts/tag.material</uri>
+                   <name>aruco_tag_29</name>
+                 </script>
+               </material> <!-- End Body Material -->
+           </visual>
+           <visual name="rear_visual">
+             <pose>-0.0025 0 0 0 0 0 </pose>
+               <geometry>
+                 <box>
+                   <size>0.005 0.33 0.33 </size>
+                 </box>
+               </geometry>
+           </visual>
+ 				</link>
+ 			</model>
+ 			</sdf>
+ 			
