@@ -11,7 +11,7 @@ This projects runs in ROS noetic, Opencv-python, Move-it! and Gazebo.
 # PART 1
 ## Robot Structure Definition, Add components and Gazebo Scene Setup:
 
-#### main.xacro
+#### [main.xacro](version2/manipulator_description/manipulator_description/xacro/main.xacro)
 - Build and configure the robotic structure for the Doosan M0609 robotic arm using URDF and Xacro.
 - Add a onrobot_rg2 gripper to the end effector.
 - Add the Camera 
@@ -46,7 +46,7 @@ This projects runs in ROS noetic, Opencv-python, Move-it! and Gazebo.
 </pre>
 
 
-#### Camera.xacro 
+#### [camera.xacro](version2/manipulator_description/manipulator_description/urdf/camera.xacro)
 - Defines a camera link (camera_link) as a visual box with a specified size and a red color for Gazebo simulation.
 - Integrate a camera at the end effector joint. Creates a fixed joint (camera_joint) to rigidly attach the camera link to its parent link ("link6")
 - Configures the camera to simulate a camera sensor, then define a ROS Gazebo plugin interfaces for the simulated camera for information about camera topics and distortion parameters.
