@@ -1,5 +1,5 @@
 # EYE-IN-HAND IBVS SIMULATION USING ARUCO TAGS
- Qian Zilling, Atanda Abdullahi Adewale, Nauman <br>
+ Qian Zilling, Atanda Abdullahi Adewale, Nauman Shafique Hashmi <br>
 
 
 # Objective:
