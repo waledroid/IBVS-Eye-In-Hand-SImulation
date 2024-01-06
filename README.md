@@ -80,13 +80,7 @@ This projects runs in ROS noetic, Opencv-python, Move-it! and Gazebo.
 - This will be accesible in gazebo with a drag and drop
 - We save the gazebo scene containing Aruco to visual_servoing/world/arucoworld.world file
 
-
-![Qian!](images/ar.jpg)
-
-
-#### main.launch
-Spawn the robot in the Gazebo scene.
-<pre></pre>
+![Gazebo Setup](images/ar.jpg)
 
 # PART 2
 ## Camera Image processing, Aruco Tag Detection, Extract 4 corner points, Coordinate Transformation: 
