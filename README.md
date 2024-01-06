@@ -24,9 +24,6 @@ This projects runs in ROS noetic, Opencv-python, Move-it! and Gazebo.
   < !-- Assign property values for clarity -->
   ...
   < !-- Include relevant Xacro files for modularity -->
-  < xacro:include filename="$(find dsr_description)/xacro/macro.m0609.white.xacro" />
-  < xacro:include filename="$(find manipulator_description)/urdf/onrobot_rg2_model_macro.xacro" />
-  < xacro:include filename="$(find manipulator_description)/urdf/camera.xacro" />
 
   < !-- Include the onrobot_rg2 macro for gripper components -->
   < xacro:onrobot_rg2 prefix="my_robot_rg2"/>
