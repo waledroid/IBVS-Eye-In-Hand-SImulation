@@ -82,7 +82,11 @@ This projects runs in ROS noetic, Opencv-python, Move-it! and Gazebo.
 
 ![Gazebo Setup](images/ar.jpg)
 
+
 # PART 2
+## Move-it Integration 
+
+# PART 3
 ## Camera Image processing, Aruco Tag Detection, Extract 4 corner points, Coordinate Transformation: 
 
 #### aruco_detect.cpp
@@ -94,7 +98,7 @@ This projects runs in ROS noetic, Opencv-python, Move-it! and Gazebo.
 <pre>
 </pre>
 
-# PART 3
+# PART 4
 ## Visual Servoing with ViSP (C++), MoveIt! Integration, manipulate the robot in Cartesian space:
 
 #### visp.cpp
@@ -109,7 +113,7 @@ This projects runs in ROS noetic, Opencv-python, Move-it! and Gazebo.
 
 <pre>moveit</pre>
 
-# PART 4
+# PART 5
 ## Simulation, Testing and Optimization:
 
 #### main.launch
