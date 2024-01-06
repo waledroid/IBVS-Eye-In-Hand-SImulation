@@ -6,7 +6,7 @@
 The aim of this VIBOT MSFT course project is to implement or simulate image-based visual servo control in Gazebo using a Doosan M0609 robotic arm manipulator with a camera mounted on its end effector. The visual features will be provided from 4-points in an Aruco tag.
 
 # Dependencies:
-This projects runs in ROS noetic.
+This projects runs in ROS noetic,Opencv-python,move-it!,Gazebo.
 
 # PART 1
 ## Robot Structure Definition, Add components and Gazebo Scene Setup:
@@ -42,10 +42,6 @@ This projects runs in ROS noetic.
     < child link="my_robot_rg2onrobot_rg2_base_link"/>
   < /joint>
 
-  < !--Create the Aruco wall link-->
-    ...
-  < !-- Create a joint between the wall and the robot's base -->
-    ...
   < /robot>
 </pre>
 
@@ -81,29 +77,14 @@ This projects runs in ROS noetic.
   < /robot>
 </pre>
 
-#### Aruco.xarco
-- Place an Aruco tag within the world scene.
-<pre>
-    < !-- gazebo_world.world -->
-  < ?xml version="1.0"?>
- 
-  < sdf version="1.4">
-    < world name="default">
+#### generatear.py
+#### arucoworld.world
+- This file generates differents 6x6 aruco tags [0-29] then plces them in the .gazebo/models folder 
+- This will be accesible in gazebo with a drag and drop
+- We save the gazebo scene containing Aruco to visual_servoing/world/arucoworld.world file
 
-      < include>
-        < uri>model://m0609_robot</uri>
-        < pose>0 0 0 0 0 0</pose>
-      < /include>
-  
-      < model name="aruco_tag">
-        < !-- Add Aruco tag properties here -->
-        < pose>1 1 1 0 0 0</pose>
-        < !-- ... other Aruco tag properties ... -->
-      < /model>
-  
-    < /world>
-  < /sdf>
-</pre>
+![Alt text](relative%20path/to/img.jpg?raw=true "Title")
+
 
 #### main.launch
 Spawn the robot in the Gazebo scene.
