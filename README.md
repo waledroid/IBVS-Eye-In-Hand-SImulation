@@ -77,8 +77,8 @@ This projects runs in ROS noetic, Opencv-python, Move-it! and Gazebo.
   < /robot>
 </pre>
 
-#### [a generatear.py](generatear.py)
-#### [a arucoworld.world](version1/visual_servoing/world/arucoworld.world)
+#### [generatear.py](generatear.py)
+#### [arucoworld.world](version1/visual_servoing/worlds/arucoworld.world)
 - This file generates differents 6x6 aruco tags [0-29] then plces them in the .gazebo/models folder 
 - This will be accesible in gazebo with a drag and drop
 - We save the gazebo scene containing Aruco to visual_servoing/world/arucoworld.world file
