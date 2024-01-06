@@ -83,36 +83,65 @@ This projects runs in ROS noetic, Opencv-python, Move-it! and Gazebo.
 
 
 # PART 2
-## Move-it Integration, Motion Planning
+## Move-it and Motion Planning
 #### [dsr_moveit_gazebo.launch](version1/m0609_moveit_config/m0609_moveit_config/launch/dsr_moveit_gazebo.launch) 
 - This is a modified Move-it main launch file 
 - It calls the default doosan move-it packages and config files to manage the movement of the m0609 robot arm.
 ![Motion Planning](images/moveit.png)
 
 # PART 3
-## Camera Image processing, Aruco Tag Detection, Extract 4 corner points, Coordinate Transformation: 
-
-#### version 1 -->  [viso.py](version1/visual_servoing/scripts/viso.py)
-#### version 2 -->  [viso_follow.py](version2/visual_servoing/scripts/viso_follow.py)
-
+## Camera Image processing, Aruco Tag Detection, 4 corner points Extraction, Coordinate Transformation, Moveit Integration and Visual servoing, manipulate the robot in Cartesian space: 
 - Subcribe to gazebo_camera Topic at '/dsr01/kinova/camera/image_raw/compressed' to get raw image  
-- Convert Image Format to OpencV format via cv_bridge
-- ArUco Detection using camera parameters (intrinsic matrix, distortion coefficients)
+- Convert Image Format to OpencV format and grayscale
+- ArUco Detection cv2.aruco.Detector using camera and detector parameters (intrinsic matrix, distortion coefficients, marker_length etc)
 - Extract the 4 corner points of the detected Aruco tag.
+  <pre> self.corners_list, self.ids, self.rejectedImgPoints  = detector.detectMarkers(gray)</pre>
 - perform Coordinate Transformation to transform the ArUco tag's corner points to align them with the end effector's coordinate system.
+- <b>my_estimatePoseSingleMarkers</b> to Calculate the necessary transformations to control the robot's end effector.
+- <b>moveit_commander</b> to integrate MoveIt! for motion planning and control.
 
-<pre>
-</pre>
+  <pre>
+        moveit_commander.roscpp_initialize(sys.argv) < !-- Initializes the ROS C++ API.-->
 
-# PART 4
-## Visual Servoing with ViSP (C++), MoveIt! Integration, manipulate the robot in Cartesian space:
+        < !-- moveit_commander recieves robots parameter in ROS parameter server as self.robot,  -->
+        self.robot = moveit_commander.RobotCommander(robot_description="/dsr01m0609/robot_description", ns = '/dsr01m0609')
 
-#### visp.cpp
-- Visp code to Calculate the necessary transformations to control the robot's end effector.
-- Integrate MoveIt! for motion planning and control.
+        < !--read the control group in the ROS param server as self.arm -->
+        self.arm = moveit_commander.MoveGroupCommander(name="arm",robot_description="/dsr01m0609/robot_description", ns = '/dsr01m0609')
+        
+        < !-- Retrieves the end effector link of the robot arm. -->
+        self.end_effector_link = self.arm.get_end_effector_link()
+        
+        < !-- Sets the reference frame for motion planning to "base_0." -->
+        self.reference_frame = 'base_0'
+        
+        < !-- Sets the pose reference frame for the arm and Enables replanning in case the motion planning fails.-->
+        self.arm.set_pose_reference_frame(self.reference_frame)
+        self.arm.allow_replanning(True)
+
+        < !-- Sets the allowed position tolerance for goal poses to 0.01 meters and Sets the allowed orientation tolerance for goal poses to 0.05 radians. -->
+        self.arm.set_goal_position_tolerance(0.01)
+        self.arm.set_goal_orientation_tolerance(0.05)
+
+        < !-- Logs an information message indicating that the robot's parameters have been successfully loaded. -->
+        rospy.loginfo("succeed to load robot's parameters")
+   
+  </pre>
+  
 - Use the computed transformations to generate a trajectory for the robot's end effector.
 - Subscribe to the camera images and perform visual servoing.
 - Publish control commands to move the robot's end effector closer to the Aruco tag.
+
+#### version 1 -->  [viso.py](version1/visual_servoing/scripts/viso.py)
+This realized the DLT method to localize the robot. It used solve PnP to get the aruco position, 
+then we use moveit to move the end-effector link of our robot to the desired position. It’s like parking a car in the correct position.
+
+#### version 2 -->  [viso_follow.py](version2/visual_servoing/scripts/viso_follow.py)
+This uses the Jacobian matrix to calculate velocity from the error vector: [u-u_star,v-v_star].
+We didn’t find how to set the velocity, so we simulate the process still using target position control method. 
+We assume each iter means one second in real world.
+
+
 
 <pre>
 </pre>
