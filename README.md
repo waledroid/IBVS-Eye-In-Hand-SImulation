@@ -92,7 +92,10 @@ This projects runs in ROS noetic, Opencv-python, Move-it! and Gazebo.
 # PART 3
 ## Camera Image processing, Aruco Tag Detection, Extract 4 corner points, Coordinate Transformation: 
 
-#### aruco_detect.cpp
+#### version 1 -->  [viso.py](version1/visual_servoing/scripts/viso.py)
+#### version 2 -->  [viso_follow.py](version2/visual_servoing/scripts/viso_follow.py)
+
+- Subcribe to gazebo_camera Topic at '/dsr01/kinova/camera/image_raw/compressed' to get raw image  
 - Convert Image Format to OpencV format via cv_bridge
 - ArUco Detection using camera parameters (intrinsic matrix, distortion coefficients)
 - Extract the 4 corner points of the detected Aruco tag.
