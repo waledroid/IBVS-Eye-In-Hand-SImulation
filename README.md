@@ -85,6 +85,7 @@ This projects runs in ROS noetic, Opencv-python, Move-it! and Gazebo.
 
 ![Gazebo Setup]("images/aruco_in _scene.jpg")
 ![My Image](images/aruco_in_scene.jpg)
+![Qian!](/images/aruco_in_scene.jpg "Gazebo Setup")
 
 
 #### main.launch
