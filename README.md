@@ -91,14 +91,13 @@ This projects runs in ROS noetic, Opencv-python, Move-it! and Gazebo.
 
 # PART 3
 ## Camera Image processing, Aruco Tag Detection, 4 corner points Extraction, Coordinate Transformation, Moveit Integration and Visual servoing, manipulate the robot in Cartesian space: 
-- Subcribe to gazebo_camera Topic at '/dsr01/kinova/camera/image_raw/compressed' to get raw image  
+- Subcribe to gazebo_camera Topic at  <b>'/dsr01/kinova/camera/image_raw/compressed'</b> to get raw image  
 - Convert Image Format to OpencV format and grayscale
-- ArUco Detection cv2.aruco.Detector using camera and detector parameters (intrinsic matrix, distortion coefficients, marker_length etc)
+- ArUco Detection  <b>cv2.aruco.Detector</b>.  using camera and detector parameters (intrinsic matrix, distortion coefficients, marker_length etc)
 - Extract the 4 corner points of the detected Aruco tag.
   <pre> self.corners_list, self.ids, self.rejectedImgPoints  = detector.detectMarkers(gray)</pre>
-- perform Coordinate Transformation to transform the ArUco tag's corner points to align them with the end effector's coordinate system.
-- <b>my_estimatePoseSingleMarkers</b> to Calculate the necessary transformations to control the robot's end effector.
-- <b>moveit_commander</b> to integrate MoveIt! for motion planning and control.
+- perform Coordinate Transformation  <b>my_estimatePoseSingleMarkers</b>  to transform the ArUco tag's corner points to align them with the end effector's coordinate system. then
+- <b>moveit_commander</b>  to integrate MoveIt! for motion planning and control.
 
   <pre>
         moveit_commander.roscpp_initialize(sys.argv) < !-- Initializes the ROS C++ API.-->
@@ -129,8 +128,8 @@ This projects runs in ROS noetic, Opencv-python, Move-it! and Gazebo.
   </pre>
   
 - Use the computed transformations to generate a trajectory for the robot's end effector.
-- Subscribe to the camera images and perform visual servoing.
-- Publish control commands to move the robot's end effector closer to the Aruco tag.
+
+
 
 #### version 1 -->  [viso.py](version1/visual_servoing/scripts/viso.py)
 This realized the DLT method to localize the robot. It used solve PnP to get the aruco position, 
