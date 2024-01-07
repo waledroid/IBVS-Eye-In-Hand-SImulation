@@ -115,10 +115,12 @@ We have 2 callback functions:
 ![Visualize Aruco](images/visualize.jpg)
 
 ##### target_callback
+
 - Sets the target of end_effector_link and plan the movement of arm,and move the arm usig moveit!.
 - <b>moveit_commander</b>  to integrate MoveIt! i.e to initialize and interact with MoveIt components for motion planning and control 
   moveit_commander is a Python API provided by the MoveIt library to interact with MoveIt using Python scripts.
   It acts as a convenient wrapper around the MoveIt functionality, allowing users to control and plan motions for robotic arms.
+
   <pre>
         moveit_commander.roscpp_initialize(sys.argv) < !-- Initializes the ROS C++ API.-->
         < !-- moveit_commander recieves robots parameter in ROS parameter server as self.robot,  -->
