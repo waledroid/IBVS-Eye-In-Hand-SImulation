@@ -168,7 +168,7 @@ We have 2 callback functions:
         print("Current state is equal to the goal state")
 </pre>
 
-In summary, the self.arm.set_pose_target method sets the target pose, and the self.arm.go() method is used to generate a trajectory and move the robot's end effector along that trajectory to reach the target pose. MoveIt takes care of the details related to motion planning and execution.
+In summary, the <b>self.arm.set_pose_target</b> method sets the target pose, and the <b>self.arm.go()</b> method is used to generate a trajectory and move the robot's end effector along that trajectory to reach the target pose. MoveIt takes care of the details related to motion planning and execution.
 
 
 
