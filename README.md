@@ -92,25 +92,19 @@ This projects runs in ROS noetic, Opencv-python, Move-it! and Gazebo.
 # PART 3
 ## Camera Image processing, Aruco Tag Detection, 4 corner points Extraction, Coordinate Transformation, Moveit Integration and Visual servoing, manipulate the robot in Cartesian space: 
 
-At first we
-
-
-
-
 #### version 1 -->  [viso.py](version1/visual_servoing/scripts/viso.py)
 This realized the DLT method to localize the robot. It used solve PnP to get the aruco position, 
 then we use moveit to move the end-effector link of our robot to the desired position. It’s like parking a car in the correct position.
 
-
 We have 2 callback functions:
 ##### image_callback 
-- Subcribe to gazebo_camera Topic at  <b>'/dsr01/kinova/camera/image_raw/compressed'</b> to get raw image,
-- - Convert Image Format to OpencV format and grayscale
-- ArUco Detection  <b>cv2.aruco.Detector</b>.  using camera and detector parameters (intrinsic matrix, distortion coefficients, marker_length etc)
-- Extract the 4 corner points of the detected Aruco tag.
+- Subcribe to gazebo_camera Topic at  <b>'/dsr01/kinova/camera/image_raw/compressed'</b> to get raw image
+- Convert Image Format to OpencV format and grayscale
+- ArUco Detection  <b>cv2.aruco.Detector</b>  using camera and detector parameters (intrinsic matrix, distortion coefficients, marker_length etc)
+- Extract the 4 corner points of the detected Aruco tag with <b>detector.detectMarkers(gray)</b>
   <pre> self.corners_list, self.ids, self.rejectedImgPoints  = detector.detectMarkers(gray)</pre>
 - Calculate the relative position and pose of the aruco tag.
-- - perform Coordinate Transformation  <b>my_estimatePoseSingleMarkers</b>  to transform the ArUco tag's corner points to align them with the end effector's coordinate system. then
+- <b>my_estimatePoseSingleMarkers</b> to perform Coordinate Transformation i.e transform the ArUco tag's corner points to align them with the end effector's coordinate system.
 - Publish the relative position information to topic  <b>'/movement'</b> Trigger the second callback function
 
 ##### target_callback
