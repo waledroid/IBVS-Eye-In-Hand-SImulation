@@ -115,37 +115,56 @@ We have 2 callback functions:
 ![Visualize Aruco](images/visualize.jpg)
 
 ##### target_callback
-- Sets the target  of  end_effector_link and plan the movement of arm,and move the arm usig moveit!.
-- <b>moveit_commander</b>  to integrate MoveIt! for motion planning and control.
+- Sets the target of end_effector_link and plan the movement of arm,and move the arm usig moveit!.
+- <b>moveit_commander</b>  to integrate MoveIt! i.e to initialize and interact with MoveIt components for motion planning and control 
+  moveit_commander is a Python API provided by the MoveIt library to interact with MoveIt using Python scripts.
+  It acts as a convenient wrapper around the MoveIt functionality, allowing users to control and plan motions for robotic arms.
   <pre>
         moveit_commander.roscpp_initialize(sys.argv) < !-- Initializes the ROS C++ API.-->
-
         < !-- moveit_commander recieves robots parameter in ROS parameter server as self.robot,  -->
         self.robot = moveit_commander.RobotCommander(robot_description="/dsr01m0609/robot_description", ns = '/dsr01m0609')
-
+   
         < !--read the control group in the ROS param server as self.arm -->
         self.arm = moveit_commander.MoveGroupCommander(name="arm",robot_description="/dsr01m0609/robot_description", ns = '/dsr01m0609')
-        
+   
         < !-- Retrieves the end effector link of the robot arm. -->
-        self.end_effector_link = self.arm.get_end_effector_link()
-        
+        self.end_effector_link = self.arm.get_end_effector_link()  
+   
         < !-- Sets the reference frame for motion planning to "base_0." -->
         self.reference_frame = 'base_0'
-        
-        < !-- Sets the pose reference frame for the arm and Enables replanning in case the motion planning fails.-->
-        self.arm.set_pose_reference_frame(self.reference_frame)
-        self.arm.allow_replanning(True)
-
-        < !-- Sets the allowed position tolerance for goal poses to 0.01 meters and Sets the allowed orientation tolerance for goal poses to 0.05 radians. -->
-        self.arm.set_goal_position_tolerance(0.01)
-        self.arm.set_goal_orientation_tolerance(0.05)
-
-        < !-- Logs an information message indicating that the robot's parameters have been successfully loaded. -->
-        rospy.loginfo("succeed to load robot's parameters")
-   
+        ...
+        ...
+        ...
   </pre>
   
 - Use the computed transformations to generate a trajectory for the robot's end effector.
+<pre>
+  def target_callback(self, msg):
+    self.detector_enabled = False
+    movements = msg.position
+    current_position = self.arm.get_current_pose().pose  # Get current position
+
+    # Adjust the target position relative to the current robot arm position
+    self.target.position.x = current_position.position.x + movements.x
+    self.target.position.y = current_position.position.y + movements.y
+    self.target.position.z = current_position.position.z + movements.z
+
+    # ... (other code)
+
+    if target_x != current_x or target_y != current_y or target_z != current_z:
+        # Set the target pose for the robot arm
+        self.arm.set_pose_target([target_x, target_y, target_z, 0.98, 0, 0, 0])
+
+        # Plan and execute the trajectory to reach the target pose
+        self.arm.go()
+
+        print('Target position reached!')
+    else:
+        print("Current state is equal to the goal state")
+</pre>
+
+
+
 
 
 #### version 2 -->  [viso_follow.py](version2/visual_servoing/scripts/viso_follow.py)
