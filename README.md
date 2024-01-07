@@ -84,7 +84,7 @@ This projects runs in ROS noetic, Opencv-python, Move-it! and Gazebo.
 
 # PART 2
 ## Move-it and Motion Planning
-#### [dsr_moveit_gazebo.launch](version1/m0609_moveit_config/m0609_moveit_config/launch/dsr_moveit_gazebo.launch) 
+#### [dsr_moveit_gazebo.launch](version1/m0609_moveit_config/launch/dsr_moveit_gazebo.launch) 
 - This is a modified Move-it main launch file 
 - It calls the default doosan move-it packages and config files to manage the movement of the m0609 robot arm.
 ![Motion Planning](images/moveit.png)
