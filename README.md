@@ -112,7 +112,7 @@ We have 2 callback functions:
 
 <>process_ar(self, corners_list, frame)<b> function visualizes the detected ArUco markers on the input image frame.
 - Draws rectangles around the detected markers on the input image frame.
-![Visualize Aruco](images/visualize.jpg)
+![Visualize Aruco](images/visualized.jpg)
 
 ##### target_callback
 - Sets the target  of  end_effector_link and plan the movement of arm,and move the arm usig moveit!.
