@@ -110,7 +110,7 @@ We have 2 callback functions:
 - Defines the 3D coordinates of marker corners in a known marker coordinate system.
 - For each detected marker, uses solvePnP to estimate its rotation and translation vectors, appends and returns the calculated vectors.
 
-<>process_ar(self, corners_list, frame)<b> function visualizes the detected ArUco markers on the input image frame.
+<b>process_ar(self, corners_list, frame)<b> function visualizes the detected ArUco markers on the input image frame.
 - Draws rectangles around the detected markers on the input image frame.
 ![Visualize Aruco](images/visualize.jpg)
 
