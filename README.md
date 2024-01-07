@@ -104,8 +104,15 @@ We have 2 callback functions:
 - Extract the 4 corner points of the detected Aruco tag with <b>detector.detectMarkers(gray)</b>
   <pre> self.corners_list, self.ids, self.rejectedImgPoints  = detector.detectMarkers(gray)</pre>
 - Estimates the relative position and pose (rotation and translation) of each detected marker.
-- <b>my_estimatePoseSingleMarkers</b> to perform Coordinate Transformation i.e transform the ArUco tag's corner points to align them with the end effector's coordinate system.
 - Processes the marker information, Calculates the average movement and Publish the relative position information to topic  <b>'/movement'</b> Trigger the second callback function
+
+<b>my_estimatePoseSingleMarkers</b>  performs Coordinate Transformation i.e transform the ArUco tag's corner points to align them with the end effector's coordinate system.
+- Defines the 3D coordinates of marker corners in a known marker coordinate system.
+- For each detected marker, uses solvePnP to estimate its rotation and translation vectors, appends and returns the calculated vectors.
+
+<>process_ar(self, corners_list, frame)<b> function visualizes the detected ArUco markers on the input image frame.
+- Draws rectangles around the detected markers on the input image frame.
+![Visualize Aruco](images/visualize.jpg)
 
 ##### target_callback
 - Sets the target  of  end_effector_link and plan the movement of arm,and move the arm usig moveit!.
