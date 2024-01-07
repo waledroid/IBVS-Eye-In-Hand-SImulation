@@ -103,9 +103,9 @@ We have 2 callback functions:
 - ArUco Detection  <b>cv2.aruco.Detector</b>  using camera and detector parameters (intrinsic matrix, distortion coefficients, marker_length etc)
 - Extract the 4 corner points of the detected Aruco tag with <b>detector.detectMarkers(gray)</b>
   <pre> self.corners_list, self.ids, self.rejectedImgPoints  = detector.detectMarkers(gray)</pre>
-- Calculate the relative position and pose of the aruco tag.
+- Estimates the relative position and pose (rotation and translation) of each detected marker.
 - <b>my_estimatePoseSingleMarkers</b> to perform Coordinate Transformation i.e transform the ArUco tag's corner points to align them with the end effector's coordinate system.
-- Publish the relative position information to topic  <b>'/movement'</b> Trigger the second callback function
+- Processes the marker information, Calculates the average movement and Publish the relative position information to topic  <b>'/movement'</b> Trigger the second callback function
 
 ##### target_callback
 - Sets the target  of  end_effector_link and plan the movement of arm,and move the arm usig moveit!.
