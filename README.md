@@ -170,6 +170,8 @@ We have 2 callback functions:
 
 In summary, the <b>self.arm.set_pose_target</b> method sets the target pose, and the <b>self.arm.go()</b> method is used to generate a trajectory and move the robot's end effector along that trajectory to reach the target pose. MoveIt takes care of the details related to motion planning and execution.
 
+![Version1](images/version1.jif)
+![Version1_process](images/version1_process.jpg)
 
 
 
