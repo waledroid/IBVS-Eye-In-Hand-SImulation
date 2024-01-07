@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+
+
+<launch>
+    
+    <arg name="model"   default="main"/>
+    <arg name="ns"      default="dsr"/>
+    <arg name="gui"     default="True" />
+    <arg name="remap"   default="False"/>
+    <arg name="color"   default="white"/>
+    <arg name="gripper" default="none"/>
+
+    <param name="robot_description" command="$(find xacro)/xacro '$(find manipulator_description)/xacro/$(arg model).xacro' '--inorder' 'namespace:=$(arg ns)' color:=$(arg color) gripper:=$(arg gripper)"/>
+.
+    <!--############################-->
+    <group if="$(eval arg('remap') == False)">
+        <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" output="screen" respawn="false">
+        </node>
+
+        <!-- Send joint values -->
+        <node name="joint_state_publisher_gui" pkg="joint_state_publisher_gui" type="joint_state_publisher_gui">
+        <param name="/use_gui" value="true"/>
+        </node>
+    </group>
+
+    <group if="$(eval arg('remap') == True)">
+        <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" output="screen" respawn="false">
+            <remap from="/joint_states" to="/dsr/joint_states"/>
+        </node>
+    </group>
+
+    <!-- Show in Rviz #####################################-->
+    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find dsr_description)/rviz/default.rviz"/>
+    
+    <!-- open Gazebo -->
+    <node pkg="gazebo_ros" type="gazebo" name="gazebo" respawn="false" output="screen"/>
+
+    <!-- We resume the logic in empty_world.launch, changing only the name of the world to be launched -->
+    <!-- <include file="$(find gazebo_ros)/launch/empty_world.launch">
+        <arg name="paused" value="true"/>
+        <arg name="use_sim_time" value="true"/>
+        <arg name="gui" value="true"/>
+        <arg name="recording" value="false"/>
+        <arg name="debug" value="false"/>
+    </include>  -->
+
+    <!-- LOAD URDF MODEL  -->
+    <!-- <param name="robot_description" textfile="$(find dsr_description)/xacro/my_robot.urdf"/> -->
+     
+    <!-- start spawn_model ，load model to Gazebo############## #####################################################################-->
+  
+    <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" args="-urdf -model my_robot -param robot_description"/>
+  
+ 
+</launch>
