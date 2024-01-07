@@ -189,7 +189,7 @@ We assume each iter means one second in real world.
 
 We have 2 call_back functions,but the difference here is in the first;
 
-#####image_callback
+##### image_callback
 Extract depth information from the ArUco marker's translation vector (tvec) obtained through the pose estimation, Z is then used in the Jacobian matrix calculation then obtain jacobian matrix and the 2d image error to calculate the relative position and rotation of the aruco tag in each iteration(i.e each second) and publish to the <b>'/movement' </b> Ros service. Since Ros services are Synchronous. 
 
 Depth Z, Calculation of Jacobian, Computation of error vector (self.e)
