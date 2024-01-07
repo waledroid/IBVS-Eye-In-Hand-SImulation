@@ -91,14 +91,31 @@ This projects runs in ROS noetic, Opencv-python, Move-it! and Gazebo.
 
 # PART 3
 ## Camera Image processing, Aruco Tag Detection, 4 corner points Extraction, Coordinate Transformation, Moveit Integration and Visual servoing, manipulate the robot in Cartesian space: 
-- Subcribe to gazebo_camera Topic at  <b>'/dsr01/kinova/camera/image_raw/compressed'</b> to get raw image  
-- Convert Image Format to OpencV format and grayscale
+
+At first we
+
+
+
+
+#### version 1 -->  [viso.py](version1/visual_servoing/scripts/viso.py)
+This realized the DLT method to localize the robot. It used solve PnP to get the aruco position, 
+then we use moveit to move the end-effector link of our robot to the desired position. It’s like parking a car in the correct position.
+
+
+We have 2 callback functions:
+##### image_callback 
+- Subcribe to gazebo_camera Topic at  <b>'/dsr01/kinova/camera/image_raw/compressed'</b> to get raw image,
+- - Convert Image Format to OpencV format and grayscale
 - ArUco Detection  <b>cv2.aruco.Detector</b>.  using camera and detector parameters (intrinsic matrix, distortion coefficients, marker_length etc)
 - Extract the 4 corner points of the detected Aruco tag.
   <pre> self.corners_list, self.ids, self.rejectedImgPoints  = detector.detectMarkers(gray)</pre>
-- perform Coordinate Transformation  <b>my_estimatePoseSingleMarkers</b>  to transform the ArUco tag's corner points to align them with the end effector's coordinate system. then
-- <b>moveit_commander</b>  to integrate MoveIt! for motion planning and control.
+- Calculate the relative position and pose of the aruco tag.
+- - perform Coordinate Transformation  <b>my_estimatePoseSingleMarkers</b>  to transform the ArUco tag's corner points to align them with the end effector's coordinate system. then
+- Publish the relative position information to topic  <b>'/movement'</b> Trigger the second callback function
 
+##### target_callback
+- Sets the target  of  end_effector_link and plan the movement of arm,and move the arm usig moveit!.
+- <b>moveit_commander</b>  to integrate MoveIt! for motion planning and control.
   <pre>
         moveit_commander.roscpp_initialize(sys.argv) < !-- Initializes the ROS C++ API.-->
 
@@ -130,17 +147,17 @@ This projects runs in ROS noetic, Opencv-python, Move-it! and Gazebo.
 - Use the computed transformations to generate a trajectory for the robot's end effector.
 
 
-
-#### version 1 -->  [viso.py](version1/visual_servoing/scripts/viso.py)
-This realized the DLT method to localize the robot. It used solve PnP to get the aruco position, 
-then we use moveit to move the end-effector link of our robot to the desired position. It’s like parking a car in the correct position.
-
 #### version 2 -->  [viso_follow.py](version2/visual_servoing/scripts/viso_follow.py)
 This uses the Jacobian matrix to calculate velocity from the error vector: [u-u_star,v-v_star].
 We didn’t find how to set the velocity, so we simulate the process still using target position control method. 
 We assume each iter means one second in real world.
 
-
+This also have 2 call_back functions,but the difference is here in the first call back function
+<b>image_callback</b>
+Only used the depth information,then used jacobian matrix and the 2d image error to calculate the relative position and rotation of aruco in each iteration(etc each second) and publish to the service <b>'/movement' </b>
+And need to mention that the reason we use service here because we think services are Synchronous. 
+When your ROS program calls a service, your program can't continue until it receives a result from the service. 
+The second callback function “target_callback”is almost the same with version one, it react to service request.
 
 <pre>
 </pre>
