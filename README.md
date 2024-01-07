@@ -170,7 +170,8 @@ We have 2 callback functions:
 
 In summary, the <b>self.arm.set_pose_target</b> method sets the target pose, and the <b>self.arm.go()</b> method is used to generate a trajectory and move the robot's end effector along that trajectory to reach the target pose. MoveIt takes care of the details related to motion planning and execution.
 <br></br>
-- Launch the Gazebo ans Run the ROS nodes and observe the robot's movement in response to the Aruco tag.
+
+Launch the Gazebo ans Run the ROS nodes and observe the robot's movement in response to the Aruco tag.
 <pre>
   roslaunch m0609_moveit_config dsr_moveit_gazebo.launch
   roslaunch visual_servoing vsm.launch
@@ -188,7 +189,7 @@ We assume each iter means one second in real world.
 
 We have 2 call_back functions,but the difference here is in the first;
 
-<b>image_callback</b>
+#####image_callback
 Extract depth information from the ArUco marker's translation vector (tvec) obtained through the pose estimation, Z is then used in the Jacobian matrix calculation then obtain jacobian matrix and the 2d image error to calculate the relative position and rotation of the aruco tag in each iteration(i.e each second) and publish to the <b>'/movement' </b> Ros service. Since Ros services are Synchronous. 
 
 Depth Z, Calculation of Jacobian, Computation of error vector (self.e)
@@ -211,13 +212,12 @@ if np.linalg.norm(self.e) < self.threshold '(line 131)
 This condition check is a termination criterion for the iterative visual servoing process. Once the Euclidean norm of the error vector falls below the predefined threshold, the code assumes that the robot has reached the desired target position and orientation, and it disables further movement and shuts down MoveIt resources.
 
 The Euclidean norm of the error vector is a measure of the magnitude or distance of the error in the visual servoing system. When this norm falls below a predefined threshold, it indicates that the current error or difference between the actual and target positions is small enough, and the system can be considered to have reached a satisfactory or accurate position.
-
  
-### target_callback
+#### target_callback
 Is almost the same with version one, it react to service request instead.
-
 <br></br>
-- Launch the Gazebo ans Run the ROS nodes and observe the robot's movement in response to the Aruco tag.
+
+Launch the Gazebo ans Run the ROS nodes and observe the robot's movement in response to the Aruco tag.
 <pre>
   roslaunch m0609_moveit_config dsr_moveit_gazebo.launch
   roslaunch visual_servoing vsm.launch
