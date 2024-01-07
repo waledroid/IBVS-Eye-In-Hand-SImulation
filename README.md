@@ -200,17 +200,3 @@ The second callback function “target_callback”is almost the same with versio
 </pre>
 ![Version2](images/version2.gif)
 
-
-# PART 5
-## Simulation, Testing and Optimization:
-
-#### main.launch
-
-- Fine-tune the visual servoing algorithm and system parameters.
-
-<pre></pre>
-
-
-<video>
- 
-</video>
