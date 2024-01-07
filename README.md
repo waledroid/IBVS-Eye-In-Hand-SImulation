@@ -92,11 +92,12 @@ This projects runs in ROS noetic, Opencv-python, Move-it! and Gazebo.
 # PART 3
 ## Camera Image processing, Aruco Tag Detection, 4 corner points Extraction, Coordinate Transformation, Moveit Integration and Visual servoing, manipulate the robot in Cartesian space: 
 
-#### version 1 -->  [viso.py](version1/visual_servoing/scripts/viso.py)
+### version 1 -->  [viso.py](version1/visual_servoing/scripts/viso.py)
 This realized the DLT method to localize the robot. It used solve PnP to get the aruco position, 
 then we use moveit to move the end-effector link of our robot to the desired position. It’s like parking a car in the correct position.
 
 We have 2 callback functions:
+
 ##### image_callback 
 - Subcribe to gazebo_camera Topic at  <b>'/dsr01/kinova/camera/image_raw/compressed'</b> to get raw image
 - Convert Image Format to OpencV format and grayscale
@@ -110,9 +111,11 @@ We have 2 callback functions:
 - Defines the 3D coordinates of marker corners in a known marker coordinate system.
 - For each detected marker, uses solvePnP to estimate its rotation and translation vectors, appends and returns the calculated vectors.
 
-<b>process_ar(self, corners_list, frame)<b> function visualizes the detected ArUco markers on the input image frame.
+<b>process_ar(self, corners_list, frame)</b> function visualizes the detected ArUco markers on the input image frame.
 - Draws rectangles around the detected markers on the input image frame.
+  
 ![Visualize Aruco](images/visualize.jpg)
+
 
 ##### target_callback
 
@@ -169,7 +172,7 @@ We have 2 callback functions:
 
 
 
-#### version 2 -->  [viso_follow.py](version2/visual_servoing/scripts/viso_follow.py)
+### version 2 -->  [viso_follow.py](version2/visual_servoing/scripts/viso_follow.py)
 This uses the Jacobian matrix to calculate velocity from the error vector: [u-u_star,v-v_star].
 We didn’t find how to set the velocity, so we simulate the process still using target position control method. 
 We assume each iter means one second in real world.
