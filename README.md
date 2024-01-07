@@ -192,6 +192,32 @@ Only used the depth information,then used jacobian matrix and the 2d image error
 And need to mention that the reason we use service here because we think services are Synchronous. 
 When your ROS program calls a service, your program can't continue until it receives a result from the service. 
 The second callback function “target_callback”is almost the same with version one, it react to service request.
+
+
+- Depth information (self.Z) is extracted from the ArUco marker's translation vector (tvec) obtained through the pose estimation.
+Z is then used in the Jacobian calculation and subsequent velocity computation.
+<pre>self.Z = tvec[0][-1].item()<pre>
+ 
+Calculation of Jacobian: 
+<pre>self.Jacobi = np.linalg.pinv(self.Jacobi) (line 119)</pre>
+
+ Computation of error vector (self.e): 
+ <pre>self.e =np.array([[self.u_star-self.u],[self.v_star-self.v]]) (line 121)</pre>
+Velocity computation: 
+<pre>self.movement_temp = self.lambd * self.Jacobi @ self.e (line 123)</pre>
+Iterative loop: 
+<pre>while np.linalg.norm(self.e) >= self.threshold: (line 132)</pre>
+
+Condition for Movement:
+<pre>
+self.threshold=0.007 (line 115)
+if np.linalg.norm(self.e) < self.threshold '(line 131) 
+</pre>
+
+This condition check is a termination criterion for the iterative visual servoing process. Once the Euclidean norm of the error vector falls below the predefined threshold, the code assumes that the robot has reached the desired target position and orientation, and it disables further movement and shuts down MoveIt resources.
+
+The Euclidean norm of the error vector is a measure of the magnitude or distance of the error in the visual servoing system. When this norm falls below a predefined threshold, it indicates that the current error or difference between the actual and target positions is small enough, and the system can be considered to have reached a satisfactory or accurate position.
+
 <br></br>
 - Launch the Gazebo ans Run the ROS nodes and observe the robot's movement in response to the Aruco tag.
 <pre>
