@@ -196,17 +196,14 @@ The second callback function “target_callback”is almost the same with versio
 
 - Depth information (self.Z) is extracted from the ArUco marker's translation vector (tvec) obtained through the pose estimation.
 Z is then used in the Jacobian calculation and subsequent velocity computation.
-<pre>self.Z = tvec[0][-1].item()<pre>
- 
+<pre>self.Z = tvec[0][-1].item()</pre>
+
 Calculation of Jacobian: 
 <pre>self.Jacobi = np.linalg.pinv(self.Jacobi) (line 119)</pre>
 
- Computation of error vector (self.e): 
- <pre>self.e =np.array([[self.u_star-self.u],[self.v_star-self.v]]) (line 121)</pre>
-Velocity computation: 
-<pre>self.movement_temp = self.lambd * self.Jacobi @ self.e (line 123)</pre>
-Iterative loop: 
-<pre>while np.linalg.norm(self.e) >= self.threshold: (line 132)</pre>
+ Computation of error vector (self.e): <pre>self.e =np.array([[self.u_star-self.u],[self.v_star-self.v]]) (line 121)</pre>
+Velocity computation: <pre>self.movement_temp = self.lambd * self.Jacobi @ self.e (line 123)</pre>
+Iterative loop: <pre>while np.linalg.norm(self.e) >= self.threshold: (line 132)</pre>
 
 Condition for Movement:
 <pre>
