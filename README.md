@@ -170,6 +170,13 @@ We have 2 callback functions:
 
 In summary, the <b>self.arm.set_pose_target</b> method sets the target pose, and the <b>self.arm.go()</b> method is used to generate a trajectory and move the robot's end effector along that trajectory to reach the target pose. MoveIt takes care of the details related to motion planning and execution.
 
+<br></br>
+- Launch the Gazebo ans Run the ROS nodes and observe the robot's movement in response to the Aruco tag.
+<pre>
+  roslaunch m0609_moveit_config dsr_moveit_gazebo.launch
+  roslaunch visual_servoing vsm.launch
+</pre>
+
 ![Version1](images/version1.gif)
 ![Version1_process](images/version1_process.jpg)
 
@@ -186,18 +193,20 @@ Only used the depth information,then used jacobian matrix and the 2d image error
 And need to mention that the reason we use service here because we think services are Synchronous. 
 When your ROS program calls a service, your program can't continue until it receives a result from the service. 
 The second callback function “target_callback”is almost the same with version one, it react to service request.
-
+<br></br>
+- Launch the Gazebo ans Run the ROS nodes and observe the robot's movement in response to the Aruco tag.
 <pre>
+  roslaunch m0609_moveit_config dsr_moveit_gazebo.launch
+  roslaunch visual_servoing vsm.launch
 </pre>
+![Version2](images/version2.gif)
 
-<pre>moveit</pre>
 
 # PART 5
 ## Simulation, Testing and Optimization:
 
 #### main.launch
-- Launch the Gazebo simulation environment.
-- Run the ROS nodes and observe the robot's movement in response to the Aruco tag.
+
 - Fine-tune the visual servoing algorithm and system parameters.
 
 <pre></pre>
