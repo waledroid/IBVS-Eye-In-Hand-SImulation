@@ -80,6 +80,7 @@ This projects runs in ROS noetic, Opencv-python, Move-it! and Gazebo.
 - We save the gazebo scene containing Aruco to visual_servoing/world/arucoworld.world file for easy reuse
 
 ![Gazebo Setup](images/ar.jpg)
+![Gazebo Setup](images/gripper.png)
 
 
 # PART 2
