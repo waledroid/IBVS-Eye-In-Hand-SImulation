@@ -1,4 +1,4 @@
-# EYE-IN-HAND IBVS SIMULATION USING ARUCO TAGS
+# EYE-IN-HAND IBVS SIMULATION USING ARUCO TAG
  Qian Zilling, Atanda Abdullahi Adewale, Nauman Shafique Hashmi <br>
 
 
