@@ -9,7 +9,7 @@ The aim of this VIBOT MSFT course project is to implement or simulate an eye-in-
 This projects runs in ROS noetic, Opencv-python, Move-it! and Gazebo.
 
 # PART 1
-## Robot Structure Definition, Add components and Gazebo Scene Setup:
+## Robot Structure Definition, Adding components and Gazebo Scene Setup:
 
 #### [main.xacro](version2/manipulator_description/xacro/main.xacro)
 - Build and configure the robotic structure for the Doosan M0609 robotic arm using URDF and Xacro.
