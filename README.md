@@ -88,7 +88,7 @@ This projects runs in ROS noetic, Opencv-python, Move-it! and Gazebo.
 #### [dsr_moveit_gazebo.launch](version1/m0609_moveit_config/launch/dsr_moveit_gazebo.launch) 
 - This is a modified Move-it main launch file 
 - It calls the default doosan move-it packages and config files to manage the movement of the m0609 robot arm.
-![Motion Planning](images/moveit.png)
+<img src="images/moveit.png" width="900" >
 
 # PART 3
 ## Camera Image processing, Aruco Tag Detection, 4 corner points Extraction, Coordinate Transformation, Moveit Integration and Visual servoing, manipulate the robot in Cartesian space: 
@@ -115,7 +115,7 @@ We have 2 callback functions:
 <b>process_ar(self, corners_list, frame)</b> function visualizes the detected ArUco markers on the input image frame.
 - Draws rectangles around the detected markers on the input image frame.
   
-![Visualize Aruco](images/visualize.jpg)
+<img src="images/visualize.jpg" width="600" >
 
 
 ##### target_callback
