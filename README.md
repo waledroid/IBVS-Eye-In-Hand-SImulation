@@ -180,7 +180,7 @@ Launch the Gazebo ans Run the ROS nodes and observe the robot's movement in resp
 
 <img src="images/version1.gif" width="900" >
 <br><br>
-<img src="images/version1_process.jpg" width="800" >
+<img src="images/version1_process.jpg" width="700" >
 
 
 
@@ -224,5 +224,5 @@ Launch the Gazebo ans Run the ROS nodes and observe the robot's movement in resp
   roslaunch m0609_moveit_config dsr_moveit_gazebo.launch
   roslaunch visual_servoing vsm.launch
 </pre>
-![Version2](images/version2_gripper.gif)
+<img src="images/version2_gripper.gif" width="900" >
 
