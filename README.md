@@ -178,8 +178,9 @@ Launch the Gazebo ans Run the ROS nodes and observe the robot's movement in resp
   roslaunch visual_servoing vsm.launch
 </pre>
 
-![Version1](images/version1.gif)
-![Version1_process](images/version1_process.jpg)
+<img src="images/version1.gif" width="900" >
+<br><br>
+<img src="images/version1_process.jpg" width="800" >
 
 
 
