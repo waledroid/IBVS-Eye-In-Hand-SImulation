@@ -1,4 +1,3 @@
-"viso.py" integrates computer vision, MoveIt (a motion planning framework for ROS), and robot control.
 
  **Initialization:**
    - It initializes a ROS node named "viso" and sets up publishers and subscribers for image processing (`image_sub`), receiving movement instructions (`target_sub`), and sending movement commands (`movement_pub`).
