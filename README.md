@@ -225,4 +225,6 @@ Launch the Gazebo ans Run the ROS nodes and observe the robot's movement in resp
   roslaunch visual_servoing vsm.launch
 </pre>
 <img src="images/version2_gripper.gif" width="900" >
+<br>
+<img src="images/auto_ivbs.gif" width="900" >
 
